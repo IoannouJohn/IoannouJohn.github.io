@@ -29,34 +29,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Times Tables Tester</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 20px;
-        }
-
-        #question {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        #answer {
-            font-size: 18px;
-            margin-top: 10px;
-        }
-    </style>
     <script src="tt.js"></script>
-
+    <link rel="stylesheet" href="tt.css">
 </head>
 
 <body onload="init()">
 
-    <h1>Times Tables Tester</h1>
+    <h1>Times Tables</h1>
 
-    <div id="question"></div>
-    <input onkeyup="keyUpFunction()" type="text" id="userAnswer" placeholder="Enter your answer">
+    <input onkeyup="keyUpFunction()" type="text" id="userAnswer" placeholder="????">
+
+    <!-- <input onclick="SayQuestion" type="button" id="sayAgain" placeholder="????"> -->
+
+    <button type="button" onclick="SayQuestion()">Say Again</button> 
+
     <div id="result"></div>
 
 </body>
