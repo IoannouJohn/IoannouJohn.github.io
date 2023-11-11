@@ -57,18 +57,71 @@ function question(testNums, mult){
     }
 }
 
+function randIndex(arr){
+    len = arr.length
+    return Math.floor(Math.random() * testNums.length)
+}
 
 function init (){
 
     // console.log("Hello world!")
     // for (let i = 0; i < 100; i++) {
-    //     console.log(getRandomInt(1, 20))
+    //     console.log(testNums[randIndex(testNums)])
     // }
 
 
-    while (true){
-        mult = NewMult(mult)
-        question(testNums, mult)    
+    // Initial display
+    console.log("Qwerty")
+    var correctAnswer; // To store the correct answer for comparison
+    displayQuestion();
+}
+
+
+// Function to generate a random multiplication question
+function generateQuestion() {
+    console.log("generateQuestion")
+
+    var num1 = testNums[randIndex(testNums)]
+    var num2 = Math.floor(Math.random() * maxMult) + 1;
+    return { num1: num1, num2: num2, answer: num1 * num2 };
+}
+
+function keyUpFunction() {
+    console.log("KeyDown")
+    checkAnswer();
+}
+
+// Function to display a new question
+function displayQuestion() {
+
+    var question = generateQuestion();
+
+    // document.getElementById('question').innerHTML = question.num1 + ' x ' + question.num2;
+    // document.getElementById('userAnswer').value = '';
+    // document.getElementById('result').innerHTML = '';
+    
+    var msg = new SpeechSynthesisUtterance();
+    msg.text = `${question.num1} times ${question.num2}`;
+    window.speechSynthesis.speak(msg);
+
+
+    correctAnswer = question.answer;
+}
+
+// Function to check the user's answer
+function checkAnswer() {
+    console.log("checkAnswer")
+
+    var userAnswer = document.getElementById('userAnswer').value;
+
+    if (parseInt(userAnswer) === correctAnswer) {
+        console.log("match")
+        document.getElementById('userAnswer').value = '';
+
+        displayQuestion()
+    }
+    else {
+        console.log(parseInt(userAnswer), correctAnswer)
 
     }
 }
