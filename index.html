@@ -1,14 +1,104 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
+    <link rel="stylesheet" href="tt.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HTML 5 Boilerplate</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body onload="init()">
-	<script src="tt.js"></script>
-	<p>qwerty</p>
-  </body>
+    <script src="tt.js"></script>
+
+</head>
+
+<body onload="init()">
+
+    <h1>Times Tables Tester</h1>
+    
+    <div id="question"></div>
+    <input type="text" id="userAnswer" placeholder="Enter your answer">
+    <button onclick="checkAnswer()">Check Answer</button>
+    <div id="result"></div>
+</body>
+
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Times Tables Tester</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        #question {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        #answer {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Times Tables Tester</h1>
+
+    <div id="question"></div>
+    <input type="text" id="userAnswer" placeholder="Enter your answer">
+    <button onclick="checkAnswer()">Check Answer</button>
+    <div id="result"></div>
+
+    <script>
+        // Function to generate a random multiplication question
+        function generateQuestion() {
+            var num1 = Math.floor(Math.random() * 10) + 1;
+            var num2 = Math.floor(Math.random() * 10) + 1;
+            return { num1: num1, num2: num2, answer: num1 * num2 };
+        }
+
+        // Function to display a new question
+        function displayQuestion() {
+            var question = generateQuestion();
+            document.getElementById('question').innerHTML = question.num1 + ' x ' + question.num2;
+            document.getElementById('userAnswer').value = '';
+            document.getElementById('result').innerHTML = '';
+            correctAnswer = question.answer;
+        }
+
+        // Function to check the user's answer
+        function checkAnswer() {
+            var userAnswer = document.getElementById('userAnswer').value;
+            var resultDiv = document.getElementById('result');
+
+            if (userAnswer === '') {
+                resultDiv.innerHTML = 'Please enter an answer.';
+            } else {
+                if (parseInt(userAnswer) === correctAnswer) {
+                    resultDiv.innerHTML = 'Correct! Well done.';
+                } else {
+                    resultDiv.innerHTML = 'Incorrect. The correct answer is ' + correctAnswer + '.';
+                }
+
+                // Display a new question after a short delay
+                setTimeout(displayQuestion, 1000);
+            }
+        }
+
+        // Initial display
+        var correctAnswer; // To store the correct answer for comparison
+        displayQuestion();
+    </script>
+
+</body>
+
 </html>
