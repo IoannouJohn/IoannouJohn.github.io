@@ -33,7 +33,7 @@ function randIndex(arr) {
 function init() {
 
     console.log("Hello world!")
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 20; i++) {
         q = generateQuestion()
         PrintQuestion(q)
     }
