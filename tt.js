@@ -24,14 +24,13 @@ function NewMult(old) {
     return NewMult
 }
 
-
 function randIndex(arr) {
     len = arr.length
     return Math.floor(Math.random() * testNums.length)
 }
 
 function init() {
-
+    
     console.log("Hello world!")
     for (let i = 0; i < 20; i++) {
         q = generateQuestion()
@@ -90,7 +89,6 @@ function checkAnswer() {
         console.log(parseInt(userAnswer), correctAnswer)
     }
 }
-
 
 // Altering Default Output
 
