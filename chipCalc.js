@@ -4,6 +4,10 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+let denominations = [5, 10, 25]
+// let denominations = [5]
+let piceValue = 0;
+
 let layout = {
     StraightUp: 0,
     Split: 0,
@@ -12,38 +16,47 @@ let layout = {
     SixBet: 0,
 }
 
-
 function CalcAnswer(q) {
+    console.log(q)
     return q.StraightUp * 35 + q.Split * 17 + q.Corner * 8 + q.Street * 11 + q.SixBet * 5
 }
+
 function GetByID(id) {
-    return document.getElementById(id).value
+    // console.log(id)
+    a = document.getElementById(id).value
+    if (typeof a === undefined || a === null) {
+        console.log("Is null or undefined")
+        return null
+    }
+
+    return a;
 }
-function GetRange(bet) {
+
+function GetBetRanges(betName) {
+    // console.log(betName)
+    let lowID = `${betName}_L`
+    let highID = `${betName}_H`
+
+    // console.log(lowID)
+    // console.log(highID)
+
+
+    low = parseInt(GetByID(lowID))
+    high = parseInt(GetByID(highID))
+    return [low, high]
 
 }
 
 function GetRandomizedLayout() {
     //make func for getting ranges 
-    StraightUpLow = parseInt(GetByID('StraightUp_L'))
-    StraightUpHigh = parseInt(GetByID('StraightUp_H'))
-    StraightUp = getRandomInt(StraightUpLow, StraightUpHigh)
+    // StraightUpLow = parseInt(GetByID('StraightUp_L'))
+    // StraightUpHigh = parseInt(GetByID('StraightUp_H'))
+    StraightUp = getRandomInt(GetBetRanges("StraightUp")[0], GetBetRanges("StraightUp")[1])
+    Split = getRandomInt(GetBetRanges("Split")[0], GetBetRanges("Split")[1])
+    Corner = getRandomInt(GetBetRanges("Corner")[0], GetBetRanges("Corner")[1])
+    Street = getRandomInt(GetBetRanges("Street")[0], GetBetRanges("Street")[1])
+    SixBet = getRandomInt(GetBetRanges("SixBet")[0], GetBetRanges("SixBet")[1])
 
-    SplitLow = parseInt(GetByID('Split_L'))
-    SplitHigh = parseInt(GetByID('Split_H'))
-    Split = getRandomInt(SplitLow, SplitHigh)
-
-    CornerLow = parseInt(GetByID('Corner_L'))
-    CornerHigh = parseInt(GetByID('Corner_H'))
-    Corner = getRandomInt(CornerLow, CornerHigh)
-
-    StreetLow = parseInt(GetByID('Street_L'))
-    StreetHigh = parseInt(GetByID('Street_H'))
-    Street = getRandomInt(StreetLow, StreetHigh)
-
-    SixBetLow = parseInt(GetByID('SixBet_L'))
-    SixBetHigh = parseInt(GetByID('SixBet_H'))
-    SixBet = getRandomInt(SixBetLow, SixBetHigh)
 
     const q = {
         StraightUp: StraightUp,
@@ -57,7 +70,7 @@ function GetRandomizedLayout() {
 }
 
 function testRanges(bet) {
-    console.log(`Testing ${bet}`)
+    // console.log(`Testing ${bet}`)
 
     let ans = [];
     for (let i = 0; i < 20; i++) {
@@ -73,6 +86,18 @@ function testRanges(bet) {
     console.log(ans);
 }
 
+function RequestStacks(n) {
+    maxNumberOfStacks = Math.trunc(n / 20)
+    let heigh = Math.min(maxNumberOfStacks, 10)
+
+
+
+
+    console.log(`${maxNumberOfStacks} Stacks`)
+    n = getRandomInt(1, high)
+    return n
+}
+
 function displayQuestion() {
 
     questionPrompt = ""
@@ -81,48 +106,71 @@ function displayQuestion() {
     questionPrompt += `Corners = ${layout.Corner}<br>`
     questionPrompt += `Streets = ${layout.Street}<br>`
     questionPrompt += `Six Bets = ${layout.SixBet}\n`
+    pp = CalcAnswer(layout)
+
+    requestStacks = RequestStacks(pp)
+
+    document.getElementById("pValue").innerHTML = `$${piceValue} Table | Patron requests ${requestStacks} stacks`;
+
 
     document.getElementById("qDisplay").innerHTML = questionPrompt
-    console.log(CalcAnswer(layout))
-
+    console.log(pp)
 }
 
-function checkAns() {
-    usrAns = parseInt(document.getElementById("userAnswer").value)
-    if (usrAns == CalcAnswer(layout))
+function GetChipInputById(id) {
+    a = document.getElementById(id).value
+    if (typeof a === undefined || a === null || a === "") {
+        // console.log("Is nul  l or undefined or empty sring ")
+        return 0
+    }
+    return parseInt(a)
+}
+
+function AnsIsCorrect() {
+    color = GetChipInputById("Color")
+    fives = GetChipInputById("Fives")
+    tens = GetChipInputById("Tens")
+    ponies = GetChipInputById("Ponies")
+    tigers = GetChipInputById("Tigers")
+    monkeys = GetChipInputById("Monkeys")
+    gorillas = GetChipInputById("Gorillas")
+    bananas = GetChipInputById("Bananas")
+
+    usrAnsSum = color * piceValue + fives * 5 + tens * 10 + ponies * 25 + tigers * 100 + monkeys * 500 + gorillas * 1000 + bananas * 5000
+    totalCashPayout = CalcAnswer(layout) * piceValue
+
+    console.log(`usrAnsSum = ${usrAnsSum}`)
+    console.log(`TotalCashPayout = ${totalCashPayout}`)
+
+    if (usrAnsSum == CalcAnswer(layout) * piceValue)
         return true
+
     return false
 }
 
 function keyUpFunction() {
-    if (checkAns()) {
-        document.getElementById('userAnswer').value = '';
-        layout = GetRandomizedLayout()
-        displayQuestion()
+    if (AnsIsCorrect()) {
+        ResetQuestion()
     }
+}
 
+function ResetQuestion() {
+    document.getElementById('Color').value = '';
+    document.getElementById('Fives').value = '';
+    document.getElementById('Tens').value = '';
+    document.getElementById('Ponies').value = '';
+    document.getElementById('Tigers').value = '';
+    document.getElementById('Monkeys').value = '';
+    document.getElementById('Gorillas').value = '';
+    document.getElementById('Bananas').value = '';
+
+    layout = GetRandomizedLayout()
+
+    piceValue = denominations[getRandomInt(0, denominations.length - 1)];
+
+    displayQuestion()
 }
 
 function init() {
-
-    layout = GetRandomizedLayout()
-    displayQuestion()
-
-    // // const q = { 
-    // //     StraightUp: 1,
-    // //     Split: 2,
-    // //     Corner: 3,
-    // //     Street: 4,
-    // //     SixBet: 5,
-    // // }
-
-    // console.log("qwerty")
-    // testRanges("StraightUp")
-    // testRanges("Split")
-    // testRanges("Corner")
-    // testRanges("Street")
-    // testRanges("SixBet")
-
-    console.log(layout)
-    console.log(CalcAnswer(layout))
+    ResetQuestion();
 }

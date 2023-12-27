@@ -11,25 +11,35 @@
 
 <body onload="init()">
 
-
-    <h2 id="SU">Straight Up</h2>
+    <h4 id="SU">Straight Up</h4>
     <input type="text" id="StraightUp_L" placeholder="Low" value="1">
     <input type="text" id="StraightUp_H" placeholder="High" value="20">
-    <h2>Split</h2>
+    <h4>Split</h4>
     <input type="text" id="Split_L" placeholder="Low" value="1">
     <input type="text" id="Split_H" placeholder="High" value="20">
-    <h2>Corner</h2>
+    <h4>Corner</h4>
     <input type="text" id="Corner_L" placeholder="Low" value="1">
-    <input type="text" id="Corner_H" placeholder="High" value="15">
-    <h2>Street</h2>
+    <input type="text" id="Corner_H" placeholder="High" value="20">
+    <h4>Street</h4>
     <input type="text" id="Street_L" placeholder="Low" value="1">
     <input type="text" id="Street_H" placeholder="High" value="10">
-    <h2>Six Bet</h2>
+    <h4>Six Bet</h4>
     <input type="text" id="SixBet_L" placeholder="Low" value="1">
     <input type="text" id="SixBet_H" placeholder="High" value="10">
+    <hr>
+
+    <input onkeyup="keyUpFunction()" type="text" id="Color" placeholder="Color">
+    <input onkeyup="keyUpFunction()" type="text" id="Fives" placeholder="Fives">
+    <input onkeyup="keyUpFunction()" type="text" id="Tens" placeholder="Tens">
+    <input onkeyup="keyUpFunction()" type="text" id="Ponies" placeholder="Ponies">
+    <input onkeyup="keyUpFunction()" type="text" id="Tigers" placeholder="Tigers">
+    <input onkeyup="keyUpFunction()" type="text" id="Monkeys" placeholder="Monkeys">
+    <input onkeyup="keyUpFunction()" type="text" id="Gorillas" placeholder="Gorillas">
+    <input onkeyup="keyUpFunction()" type="text" id="Bananas" placeholder="Bananas">
 
 
     <p id="qDisplay">qwerty</p>
+    <p id="pValue">qwerty</p>
 
     <input onkeyup="keyUpFunction()" type="text" id="userAnswer" placeholder="????">
 
