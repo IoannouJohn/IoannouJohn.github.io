@@ -17,7 +17,6 @@ let layout = {
 }
 
 function CalcAnswer(q) {
-    console.log(q)
     return q.StraightUp * 35 + q.Split * 17 + q.Corner * 8 + q.Street * 11 + q.SixBet * 5
 }
 
@@ -28,7 +27,6 @@ function GetByID(id) {
         console.log("Is null or undefined")
         return null
     }
-
     return a;
 }
 
@@ -40,11 +38,9 @@ function GetBetRanges(betName) {
     // console.log(lowID)
     // console.log(highID)
 
-
     low = parseInt(GetByID(lowID))
     high = parseInt(GetByID(highID))
     return [low, high]
-
 }
 
 function GetRandomizedLayout() {
@@ -56,7 +52,6 @@ function GetRandomizedLayout() {
     Corner = getRandomInt(GetBetRanges("Corner")[0], GetBetRanges("Corner")[1])
     Street = getRandomInt(GetBetRanges("Street")[0], GetBetRanges("Street")[1])
     SixBet = getRandomInt(GetBetRanges("SixBet")[0], GetBetRanges("SixBet")[1])
-
 
     const q = {
         StraightUp: StraightUp,
@@ -90,16 +85,12 @@ function RequestStacks(n) {
     maxNumberOfStacks = Math.trunc(n / 20)
     let heigh = Math.min(maxNumberOfStacks, 10)
 
-
-
-
     console.log(`${maxNumberOfStacks} Stacks`)
     n = getRandomInt(1, high)
     return n
 }
 
 function displayQuestion() {
-
     questionPrompt = ""
     questionPrompt += `Straight Ups = ${layout.StraightUp}<br>`
     questionPrompt += `Splits = ${layout.Split}<br>`
@@ -111,7 +102,6 @@ function displayQuestion() {
     requestStacks = RequestStacks(pp)
 
     document.getElementById("pValue").innerHTML = `$${piceValue} Table | Patron requests ${requestStacks} stacks`;
-
 
     document.getElementById("qDisplay").innerHTML = questionPrompt
     console.log(pp)
@@ -140,9 +130,9 @@ function AnsIsCorrect() {
     totalCashPayout = CalcAnswer(layout) * piceValue
 
     console.log(`usrAnsSum = ${usrAnsSum}`)
-    console.log(`TotalCashPayout = ${totalCashPayout}`)
+    console.log(`TotalCashPayout = $${totalCashPayout}`)
 
-    if (usrAnsSum == CalcAnswer(layout) * piceValue)
+    if (usrAnsSum == totalCashPayout)
         return true
 
     return false
@@ -154,6 +144,10 @@ function keyUpFunction() {
     }
 }
 
+function ShowAns() {
+    document.getElementById("ansDisplay").innerHTML = CalcAnswer(layout);
+}
+
 function ResetQuestion() {
     document.getElementById('Color').value = '';
     document.getElementById('Fives').value = '';
@@ -163,6 +157,7 @@ function ResetQuestion() {
     document.getElementById('Monkeys').value = '';
     document.getElementById('Gorillas').value = '';
     document.getElementById('Bananas').value = '';
+    document.getElementById('ansDisplay').innerHTML = '';
 
     layout = GetRandomizedLayout()
 

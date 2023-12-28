@@ -10,7 +10,6 @@
 </head>
 
 <body onload="init()">
-
     <h4 id="SU">Straight Up</h4>
     <input type="text" id="StraightUp_L" placeholder="Low" value="1">
     <input type="text" id="StraightUp_H" placeholder="High" value="20">
@@ -37,11 +36,12 @@
     <input onkeyup="keyUpFunction()" type="text" id="Gorillas" placeholder="Gorillas">
     <input onkeyup="keyUpFunction()" type="text" id="Bananas" placeholder="Bananas">
 
-
     <p id="qDisplay">qwerty</p>
     <p id="pValue">qwerty</p>
 
-    <input onkeyup="keyUpFunction()" type="text" id="userAnswer" placeholder="????">
+    <button type="button" onclick="ResetQuestion()">Reset</button> 
+    <button type="button" onclick="ShowAns()">Show Ans</button> 
+    <p id="ansDisplay"></p>
 
     <!-- <button type="button" onclick="()">Say Again</button>  -->
     
