@@ -28,19 +28,23 @@ function GetNonLinearRandom() {
     return 5;
 }
 
-async function init() {
-    log = [0,0,0,0,0]
+async function Start() {
+    // log = [0,0,0,0,0]
+
     while (true) {
         n = GetNonLinearRandom();
         SayQuestion(n)
         sleepLength = parseInt(document.getElementById("id").value)
-        await sleep(sleepLength);
-        log[n - 1] = log[n - 1] + 1
-        
-        // console.log(log)
-        
         console.log(n)
         console.log(`${sleepLength / 1000} seconds`)
+
+        
+        await sleep(sleepLength);
+
+        // log[n - 1] = log[n - 1] + 1
+
+        // console.log(log)
+
     }
 }
 
