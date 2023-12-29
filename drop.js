@@ -35,10 +35,14 @@ async function Start() {
         n = GetNonLinearRandom();
         SayQuestion(n)
         sleepLength = parseInt(document.getElementById("id").value)
-        console.log(n)
+
+        if (sleepLength < 1000)
+            sleepLength = 1000
+
+            console.log(n)
         console.log(`${sleepLength / 1000} seconds`)
 
-        
+
         await sleep(sleepLength);
 
         // log[n - 1] = log[n - 1] + 1
