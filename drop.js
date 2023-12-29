@@ -26,10 +26,7 @@ function GetNonLinearRandom() {
     if (n <= 70)
         return 4;
     return 5;
-
-
 }
-
 
 async function init() {
     log = [0,0,0,0,0]
@@ -42,8 +39,8 @@ async function init() {
         
         // console.log(log)
         
-        // console.log(n)
-        // console.log(sleepLength / 1000)
+        console.log(n)
+        console.log(`${sleepLength / 1000} seconds`)
     }
 }
 
