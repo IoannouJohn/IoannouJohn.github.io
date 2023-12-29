@@ -36,11 +36,18 @@ async function Start() {
         SayQuestion(n)
         sleepLength = parseInt(document.getElementById("id").value)
 
-        if (sleepLength < 1000)
+        if (
+            sleepLength < 1500 ||
+            typeof sleepLength === undefined ||
+            sleepLength === null ||
+            sleepLength === "" ||
+            isNaN(sleepLength)) {
+                
             sleepLength = 1000
+        }
 
-            console.log(n)
-        console.log(`${sleepLength / 1000} seconds`)
+        console.log(n)
+        console.log(`${sleepLength}ms`)
 
 
         await sleep(sleepLength);
