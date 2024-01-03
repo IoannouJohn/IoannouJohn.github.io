@@ -125,7 +125,7 @@ function AnsIsCorrect() {
     monkeys = GetChipInputById("Monkeys")
     gorillas = GetChipInputById("Gorillas")
     bananas = GetChipInputById("Bananas")
-
+    
     usrAnsSum = color * piceValue + fives * 5 + tens * 10 + ponies * 25 + tigers * 100 + monkeys * 500 + gorillas * 1000 + bananas * 5000
     totalCashPayout = CalcAnswer(layout) * piceValue
 
