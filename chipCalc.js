@@ -138,14 +138,21 @@ function AnsIsCorrect() {
     return false
 }
 
-function keyUpFunction() {
+function Submit() {
     if (AnsIsCorrect()) {
         ResetQuestion()
     }
 }
 
 function ShowAns() {
-    document.getElementById("ansDisplay").innerHTML = CalcAnswer(layout);
+    ansDisplay = document.getElementById("ansDisplay") 
+
+    if (ansDisplay.innerHTML == ""){
+        ansDisplay.innerHTML = CalcAnswer(layout);
+    }
+    else{
+        ansDisplay.innerHTML = ""
+    }
 }
 
 function ResetQuestion() {

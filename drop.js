@@ -30,20 +30,20 @@ function GetNonLinearRandom() {
 
 async function Start() {
     // log = [0,0,0,0,0]
-
+    minSleep = 1500
     while (true) {
         n = GetNonLinearRandom();
         SayQuestion(n)
         sleepLength = parseInt(document.getElementById("id").value)
 
         if (
-            sleepLength < 1500 ||
+            sleepLength < minSleep ||
             typeof sleepLength === undefined ||
             sleepLength === null ||
             sleepLength === "" ||
             isNaN(sleepLength)) {
                 
-            sleepLength = 1000
+            sleepLength = minSleep
         }
 
         console.log(n)
