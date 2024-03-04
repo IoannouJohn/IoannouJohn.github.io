@@ -17,13 +17,13 @@ function SayQuestion(n) {
 
 function GetNonLinearRandom() {
     n = getRandomInt(1, 100)
-    if (n <= 10)
+    if (n <= 5)
         return 1;
-    if (n <= 20)
+    if (n <= 10)
         return 2;
-    if (n <= 40)
+    if (n <= 20)
         return 3;
-    if (n <= 70)
+    if (n <= 60)
         return 4;
     return 5;
 }
