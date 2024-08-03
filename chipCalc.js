@@ -81,7 +81,7 @@ function testRanges(bet) {
     console.log(ans);
 }
 
-function RequestStacks(n) {
+function RequestStacks(n) { 
     maxNumberOfStacks = Math.trunc(n / 20)
     let heigh = Math.min(maxNumberOfStacks, 10)
 
