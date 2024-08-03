@@ -1,0 +1,86 @@
+* {
+  /* font-size: larger; */
+  font-weight: bold;
+  color: black;
+}
+
+h4 {
+  color: #F5F4F4;
+  margin-bottom: 0;
+  margin-top: .5em;
+}
+
+h1,
+h2 {
+  color: #F5F4F4;
+}
+
+p {
+  color: #F5F4F4;
+}
+
+.link {
+  color: blue;
+
+
+}
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 20px;
+  background: #0A0B0B;
+  color: #F5F4F4;
+  font-size: larger;
+  font-weight: bold;
+}
+
+input {
+  border-color: #0A0B0B;
+}
+
+#Fives {
+  /* background-color:171,29,17 ; */
+  background-color: rgb(171, 29, 17);
+  /* color: #119eab; */
+}
+
+#Tens {
+  /* background-color:171,29,17 ; */
+  background-color: rgb(23, 42, 117);
+}
+
+#Ponies {
+  /* background-color:171,29,17 ; */
+  background-color: rgb(44, 139, 64);
+}
+
+#Tigers {
+  /* background-color:171,29,17 ; */
+  background-color: rgb(15, 16, 20);
+  color: rgb(255, 255, 255);
+}
+
+#Monkeys {
+  /* background-color:171,29,17 ; */
+  background-color: rgb(144, 112, 178);
+}
+
+#Gorillas {
+  /* background-color:171,29,17 ; */
+  background-color: rgb(3, 195, 244);
+}
+
+#Bananas {
+  /* background-color:171,29,17 ; */
+  background-color: rgb(205, 83, 65);
+}
+
+.mults {
+  display: inline;
+  color: red;
+}
+
+.box {
+  display: block;
+}
